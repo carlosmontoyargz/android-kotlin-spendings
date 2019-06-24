@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categoria_comida">Comida</string-array>
+    <string-array name="categoria_bebida">Bebida</string-array>
+    <string-array name="categorias">Comida,Bebida,Transporte</string-array>
+</resources>

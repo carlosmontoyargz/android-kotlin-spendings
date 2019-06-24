@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">StorageApp</string>
+    <string name="label_nombre">Nombre:</string>
+    <string name="label_edad">Edad:</string>
+    <string name="save_button">Nuevo gasto</string>
+    <string name="gasto_label">Gasto $:</string>
+    <string name="button_ver_gastos">Ver gastos</string>
+    <string name="button_guardar_gasto">Guardar gasto</string>
+    <string name="categoria_comida">Comida</string>
+    <string name="categoria_bebida">Bebida</string>
+    <string name="categoria_transporte">Transporte</string>
+    <string name="label_hola">"Hola "</string>
+    <string name="edad_label">", tu edad es "</string>
+    <string name="anios_label">" años."</string>
+    <string name="total_label">Total</string>
+</resources>
