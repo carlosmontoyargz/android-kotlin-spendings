@@ -7,22 +7,21 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.storageapp.models.Usuario
-import com.example.storageapp.service.UsuarioService
+import com.example.storageapp.repository.UsuarioRepository
 
 class InfoActivity : AppCompatActivity()
 {
-	private val usuarioService = UsuarioService()
+	val usuarioRepository = UsuarioRepository(this)
+	var usuario : Usuario? = null
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_info)
 
-		val usuario = usuarioService.cargarUsuario()
-		//val usuario = usuarioService.cargarUsuarioInternal(openFileInput("usuario"))
-		//val usuario = usuarioService.cargarUsuarioExternal()
+		//val usuario = usuarioService.cargarUsuario()
 		if (usuario != null) {
-			findViewById<TextView>(R.id.editTextNombre).text = usuario.nombre
-			findViewById<TextView>(R.id.editTextEdad).text = usuario.edad.toString()
+			findViewById<TextView>(R.id.editTextNombre).text = usuario?.nombre
+			findViewById<TextView>(R.id.editTextEdad).text = usuario?.edad.toString()
 		}
 
 		findViewById<Button>(R.id.buttonNuevoGasto)
@@ -38,10 +37,17 @@ class InfoActivity : AppCompatActivity()
 	{
 		val nombre = findViewById<TextView>(R.id.editTextNombre).text
 		val edad = findViewById<TextView>(R.id.editTextEdad).text
-		if (nombre.isNotEmpty() && edad.isNotEmpty()) {
-			usuarioService.guardarUsuario(
-				Usuario(nombre = nombre.toString(), edad = Integer.parseInt(edad.toString())))
-			startActivity(Intent(this, activity))
+
+		if (nombre.isNotEmpty() && edad.isNotEmpty())
+		{
+			this.usuario = usuarioRepository
+				.saveByName(Usuario(
+					nombre = nombre.toString(),
+					edad = Integer.parseInt(edad.toString())))
+
+			startActivity(
+				Intent(this, activity)
+					.putExtra("usuario", usuario))
 		}
 		else Toast
 			.makeText(applicationContext, "No se ha especificado usuario o edad", Toast.LENGTH_SHORT)

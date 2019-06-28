@@ -5,7 +5,7 @@ import com.example.storageapp.models.Usuario
 import com.example.storageapp.tool.ExternalStorageTools
 import java.io.*
 
-class UsuarioService
+class UsuarioExternalStorage
 {
 	private val strgTool = ExternalStorageTools()
 

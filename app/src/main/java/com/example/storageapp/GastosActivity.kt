@@ -7,13 +7,13 @@ import android.widget.RadioButton
 import android.widget.TextView
 import com.example.storageapp.models.Categoria.*
 import com.example.storageapp.service.GastoService
-import com.example.storageapp.service.UsuarioService
+import com.example.storageapp.service.UsuarioExternalStorage
 import java.math.BigDecimal
 
 class GastosActivity : AppCompatActivity()
 {
 	private var categoria = COMIDA
-	private val usuarioService = UsuarioService()
+	private val usuarioService = UsuarioExternalStorage()
 	private val gastoService = GastoService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
