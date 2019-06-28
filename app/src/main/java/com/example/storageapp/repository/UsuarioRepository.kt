@@ -116,7 +116,7 @@ class UsuarioRepository(context: Context)
 			}
 			else null
 		}
-		Log.i("DB", usuario.toString())
+		Log.i("DB", "Usuario encontrado : $usuario")
 		return usuario
 	}
 
