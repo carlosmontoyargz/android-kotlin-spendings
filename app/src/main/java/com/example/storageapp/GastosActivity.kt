@@ -6,15 +6,15 @@ import android.widget.Button
 import android.widget.RadioButton
 import android.widget.TextView
 import com.example.storageapp.models.Categoria.*
-import com.example.storageapp.service.GastoService
-import com.example.storageapp.service.UsuarioExternalStorage
+import com.example.storageapp.models.Gasto
+import com.example.storageapp.models.Usuario
+import com.example.storageapp.repository.GastoRepository
 import java.math.BigDecimal
 
 class GastosActivity : AppCompatActivity()
 {
 	private var categoria = COMIDA
-	private val usuarioService = UsuarioExternalStorage()
-	private val gastoService = GastoService()
+	private val gastoRepository = GastoRepository(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,13 +30,17 @@ class GastosActivity : AppCompatActivity()
 		findViewById<RadioButton>(R.id.radioButtonTransporte)
 			.setOnClickListener { categoria = TRANSPORTE }
 
-		val usuario = usuarioService.cargarUsuario() ?: return
+		val usuario = intent.getSerializableExtra("usuario") as Usuario
 		findViewById<Button>(R.id.buttonGuardarGasto)
             .setOnClickListener {
-                gastoService.guardarGasto(
-					BigDecimal(findViewById<TextView>(R.id.editTextGasto).text.toString()),
-					categoria, usuario)
-                finish()
+                gastoRepository.insert(Gasto(
+					cantidad = BigDecimal(findViewById<TextView>(R.id.editTextGasto).text.toString()),
+					categoria = categoria,
+					usuarioId = usuario.id))
+				finish()
             }
+
+		findViewById<Button>(R.id.buttonCancelar)
+			.setOnClickListener { finish() }
     }
 }

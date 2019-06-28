@@ -49,4 +49,11 @@
             android:id="@+id/buttonGuardarGasto"
             app:layout_constraintHorizontal_bias="0.498" android:layout_marginTop="24dp"
             app:layout_constraintTop_toBottomOf="@+id/radioGroup"/>
+    <Button
+            android:text="Cancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonCancelar" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/buttonGuardarGasto"/>
 </android.support.constraint.ConstraintLayout>

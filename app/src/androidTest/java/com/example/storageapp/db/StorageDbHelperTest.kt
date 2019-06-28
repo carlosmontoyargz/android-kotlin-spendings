@@ -45,7 +45,7 @@ class StorageDbHelperTest
 			while (moveToNext()) {
 				usuarios.add(
 					Usuario(
-						id = getInt(getColumnIndexOrThrow(BaseColumns._ID)),
+						id = getLong(getColumnIndexOrThrow(BaseColumns._ID)),
 						nombre = getString(getColumnIndexOrThrow(StorageContract.Usuario.COLUMN_NAME_NOMBRE)),
 						edad = getInt(getColumnIndexOrThrow(StorageContract.Usuario.COLUMN_NAME_EDAD))
 					)
